@@ -1,10 +1,23 @@
 # CSS Arcade Night — Neon Grid
 
+# CSS Arcade Night — Neon Grid
+
+## Submission Links
+
+**Codd Live URL:**  
+https://codd.cs.gsu.edu/~nchitturi1/css-arcade-neon-grid/
+
+**GitHub Pages Live URL:**  
+https://chnirupam.github.io/css-arcade-neon-grid/
+
+**GitHub Repository:**  
+https://github.com/ChNirupam/css-arcade-neon-grid
+
+
 ## Team Members
 
 - Nirupamarayudu Chitturi — 002931435
 - Shared evidence document: `Activity05-NeonGrid-Evidence.docx`
-- Shared Google Doc URL: **paste the link here after uploading/converting the evidence document to Google Docs**
 
 ## Repository & Live URL
 
@@ -133,5 +146,4 @@ The heart was missing a positioning rule. `position: absolute` makes its offsets
 - `ICOLLEGE_SUBMISSION_TEXT.txt`
 - `GITHUB_SETUP.txt`
 - `LIVE_DEFENSE.txt`
-Final submission reviewed and ready.
-Final submission reviewed and ready.
+
