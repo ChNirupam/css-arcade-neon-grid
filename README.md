@@ -133,3 +133,5 @@ The heart was missing a positioning rule. `position: absolute` makes its offsets
 - `ICOLLEGE_SUBMISSION_TEXT.txt`
 - `GITHUB_SETUP.txt`
 - `LIVE_DEFENSE.txt`
+Final submission reviewed and ready.
+Final submission reviewed and ready.
