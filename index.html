@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Retro Tic-Tac-Toe Cabinet — CSS Arcade Night Activity 05">
+  <title>Neon Tic-Tac-Toe · CSS Arcade</title>
+  <!--
+    Activity 05 · CSS Arcade Night · Round 3 Build
+    Team Name: Neon Grid
+    Members / IDs:
+      Nirupamarayudu Chitturi — 002931435
+    Theme: Retro Tic-Tac-Toe Cabinet
+  -->
+  <style>
+    /* ==================================================
+       0. DESIGN TOKENS — Checkpoint 6
+       ================================================== */
+    :root {
+      --bg: #090617;
+      --surface: #17112d;
+      --surface-light: #241a46;
+      --ink: #f8fafc;
+      --muted: #c4b5fd;
+      --neon-pink: #f472b6;
+      --neon-cyan: #22d3ee;
+      --neon-yellow: #fde047;
+      --radius: 16px;
+      --space: 1rem;
+      --shadow: 0 0 22px rgba(34, 211, 238, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #251451 0, var(--bg) 42%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+    }
+
+    main {
+      width: min(92%, 900px);
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    section > h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    /* ==================================================
+       1. FLEXBOX — Checkpoint 1
+       ================================================== */
+    .cabinet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space);
+      padding: 1.25rem 5%;
+      border-bottom: 2px solid var(--neon-cyan);
+      background: rgba(9, 6, 23, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      color: var(--neon-pink);
+      text-shadow: 0 0 12px var(--neon-pink);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+    }
+
+    .cabinet-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .cabinet-nav a {
+      padding: 0.45rem 0.7rem;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    /* ==================================================
+       2. CSS GRID — Checkpoint 2
+       ================================================== */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(80px, 120px));
+      gap: 10px;
+      justify-content: center;
+      position: relative;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 1rem;
+      background: var(--surface);
+      border: 3px solid var(--neon-cyan);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .tile {
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      min-height: 100px;
+      background: var(--surface-light);
+      border: 2px solid #4c3b78;
+      border-radius: 12px;
+      color: var(--ink);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease,
+                  border-color 0.2s ease;
+    }
+
+    .tile.x {
+      color: var(--neon-pink);
+      text-shadow: 0 0 14px var(--neon-pink);
+    }
+
+    .tile.o {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 14px var(--neon-cyan);
+    }
+
+    /* ==================================================
+       3. ANIMATION — Checkpoint 3
+       ================================================== */
+    .marquee-text {
+      color: var(--neon-yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      animation: attract-mode 2.4s ease-in-out 0.6s both;
+    }
+
+    @keyframes attract-mode {
+      0% {
+        transform: translateY(-12px) scale(0.92);
+        color: var(--neon-cyan);
+      }
+      50% {
+        transform: translateY(0) scale(1.08);
+        color: var(--neon-pink);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        color: var(--neon-yellow);
+      }
+    }
+
+    .win-line {
+      position: absolute;
+      left: 7%;
+      top: 49%;
+      z-index: 4;
+      width: 86%;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--neon-yellow);
+      box-shadow: 0 0 16px var(--neon-yellow);
+      transform-origin: left center;
+      animation: winning-line 1.2s ease 2.5s both;
+    }
+
+    @keyframes winning-line {
+      0% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scaleX(0.55);
+        opacity: 1;
+      }
+      100% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+    }
+
+    /* ==================================================
+       4. POSITIONING + Z-INDEX — Checkpoint 4
+       ================================================== */
+    .layer-stack {
+      position: relative;
+      z-index: 0;
+      min-height: 300px;
+      overflow: hidden;
+      border: 2px solid #4c3b78;
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .layer {
+      position: absolute;
+      border-radius: var(--radius);
+    }
+
+    .layer-back {
+      z-index: 1;
+      inset: 35px 8%;
+      background:
+        radial-gradient(circle at 25% 30%, var(--neon-pink), transparent 30%),
+        radial-gradient(circle at 75% 65%, var(--neon-cyan), transparent 30%),
+        #130d29;
+      opacity: 0.55;
+    }
+
+    .layer-mid {
+      z-index: 2;
+      inset: 70px 17%;
+      border: 3px solid var(--neon-cyan);
+      background: #0c0a1a;
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.45);
+    }
+
+    .layer-front {
+      z-index: 3;
+      top: 115px;
+      left: 50%;
+      width: min(78%, 440px);
+      padding: 1rem;
+      transform: translateX(-50%) rotate(-3deg);
+      background: var(--neon-pink);
+      color: #160a22;
+      text-align: center;
+      font-size: clamp(1.35rem, 5vw, 2.3rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      box-shadow: 0 0 28px rgba(244, 114, 182, 0.65);
+    }
+
+    /* ==================================================
+       5. MICRO-INTERACTION — Checkpoint 5
+       ================================================== */
+    .tile:hover,
+    .tile:focus-visible {
+      transform: translateY(-5px) scale(1.04);
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 22px rgba(253, 224, 71, 0.55);
+      outline: none;
+    }
+
+    .cabinet-nav a:hover,
+    .cabinet-nav a:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 0 var(--neon-pink);
+      outline: 2px solid transparent;
+    }
+
+    .score-list {
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+      background: var(--surface);
+      border: 1px solid #4c3b78;
+      border-radius: var(--radius);
+    }
+
+    .score-list li {
+      padding: 0.5rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .cabinet-footer {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid #4c3b78;
+    }
+
+    /* ==================================================
+       6. RESPONSIVE LAYOUT — Checkpoint 6
+       ================================================== */
+    @media (max-width: 768px) {
+      .cabinet-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cabinet-nav {
+        flex-wrap: wrap;
+      }
+
+      .game-grid {
+        grid-template-columns: repeat(3, minmax(65px, 90px));
+      }
+
+      .tile {
+        min-height: 75px;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+    }
+
+    /* Optional bonus: motion-safe experience. */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="cabinet-header">
+    <h1 class="logo">🕹️ Neon Grid</h1>
+    <nav class="cabinet-nav" aria-label="Cabinet navigation">
+      <a href="#play">Play</a>
+      <a href="#scores">High Scores</a>
+      <a href="#showpiece">Showpiece</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="play" aria-labelledby="play-title">
+      <h2 id="play-title" class="marquee-text">Player 1 Wins!</h2>
+
+      <div class="game-grid" aria-label="Completed tic-tac-toe board">
+        <div class="tile x" tabindex="0">X</div>
+        <div class="tile o" tabindex="0">O</div>
+        <div class="tile o" tabindex="0">O</div>
+        <div class="tile o" tabindex="0">O</div>
+        <div class="tile x" tabindex="0">X</div>
+        <div class="tile o" tabindex="0">O</div>
+        <div class="tile x" tabindex="0">X</div>
+        <div class="tile o" tabindex="0">O</div>
+        <div class="tile x" tabindex="0">X</div>
+        <div class="win-line" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="scores" aria-labelledby="scores-title">
+      <h2 id="scores-title">🏆 High Scores</h2>
+      <ol class="score-list">
+        <li>ACE · 9,999</li>
+        <li>PIX · 8,250</li>
+        <li>CPU · 7,500</li>
+      </ol>
+    </section>
+
+    <section id="showpiece" aria-labelledby="showpiece-title">
+      <h2 id="showpiece-title">Arcade Champion</h2>
+      <div class="layer-stack">
+        <div class="layer layer-back" aria-hidden="true"></div>
+        <div class="layer layer-mid" aria-hidden="true"></div>
+        <div class="layer layer-front">PLAYER 1 WINS</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="cabinet-footer">
+    <p>&copy; 2026 Neon Grid · Activity 05</p>
+  </footer>
+</body>
+</html>

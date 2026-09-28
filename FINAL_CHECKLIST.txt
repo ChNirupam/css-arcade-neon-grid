@@ -1,0 +1,11 @@
+FINAL CHECKLIST
+ index.html (embedded CSS; all 6 checkpoints)
+ css_arcade_broken.html (all 4 bugs corrected)
+ README.md with findings, fixes, checkpoint map, screenshots, defense answers
+ Activity05-NeonGrid-Evidence.docx (exported evidence document)
+ Round 1 6/6 screenshot
+ Round 2 4/4 screenshot
+ Cabinet/DevTools screenshot
+ iCollege submission text
+ GitHub setup commands
+ Live defense script

@@ -1,0 +1,12 @@
+2-MINUTE LIVE DEFENSE — NEON GRID
+
+1) FLEXBOX
+Our main flex container is .cabinet-header. It uses display:flex, justify-content:space-between, align-items:center, and gap. To flip its main axis from horizontal to vertical, change flex-direction to column. The .cabinet-nav is also a flex container.
+
+2) GRID
+Inspect .game-grid and enable the Grid overlay. We define three columns using grid-template-columns: repeat(3, minmax(80px, 120px));. With nine tiles, this forms a 3 x 3 Tic-Tac-Toe board.
+
+3) STACKING
+.layer-stack is position:relative and z-index:0, so it establishes the local stacking context. The absolutely positioned children use z-index 1, 2, and 3. .layer-front is on top because it has z-index:3.
+
+

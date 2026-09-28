@@ -1,0 +1,24 @@
+Activity 05 — CSS Arcade Night
+
+Team Name: Neon Grid
+
+Team Member:
+Nirupamarayudu Chitturi — 002931435
+
+Theme:
+Retro Tic-Tac-Toe Cabinet
+
+GitHub Repository:
+https://github.com/ChNirupam/css-arcade-neon-grid
+
+Live URL:
+https://chnirupam.github.io/css-arcade-neon-grid/
+
+Submission files in this package:
+- Activity05-NeonGrid-Evidence.docx
+- index.html
+- NeonGrid-Round1-Score.png
+- NeonGrid-Round2-BugProof.png
+- NeonGrid-Cabinet-DevTools.png
+
+The project includes all six mandatory CSS checkpoints and all four corrected Round 2 bugs.
